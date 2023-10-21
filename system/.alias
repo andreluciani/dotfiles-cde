@@ -1,0 +1,47 @@
+# Shortcuts
+alias reload="source ~/.bash_profile"
+alias rr="rm -rf"
+
+# List declared aliases, functions, paths
+alias aliases="alias | sed 's/=.*//'"
+alias gitaliases="git config --get-regexp ^alias"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo -e ${PATH//:/\\n}'
+
+# Directory listing/traversal
+LS_COLORIZED=$(is-supported "ls --color" --color -G)
+LS_TIMESTYLEISO=$(is-supported "ls --time-style=long-iso" --time-style=long-iso)
+LS_GROUPDIRSFIRST=$(is-supported "ls --group-directories-first" --group-directories-first)
+
+alias l="ls -lahA $LS_COLORIZED $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
+alias ll="ls -lA $LS_COLORIZED"
+alias lt="ls -lhAtr $LS_COLORIZED $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
+alias ld="ls -ld $LS_COLORIZED */"
+alias lp="stat -c '%a %n' *"
+
+unset LS_COLORIZED LS_TIMESTYLEISO LS_GROUPDIRSFIRST
+
+# Npm
+alias npmi="npm install"
+alias npmu="npm uninstall"
+alias npmri="rm -r node_modules && npm install"
+
+# Network
+alias ip="curl -s ipinfo.io | jq -r '.ip'"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+
+# Miscellaneous
+alias hosts="sudo $EDITOR /etc/hosts"
+alias quit="exit"
+alias week="date +%V"
+alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+
+# Git
+alias undo="git reset --soft HEAD~${num}"
+alias redo="git reset HEAD@{1}"
+alias dlocal="git branch --D "$1""
+alias dremote="git push origin --d"
+
+# Go
+alias gotest="go test -race ./..."
+alias gocov="go test -race -coverprofile cover.out ./... && go tool cover -html cover.out -o cover.html"
