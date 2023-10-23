@@ -1,6 +1,5 @@
 # If not running interactively, don't do anything
 if [ -z "$PS1" ]; then
-    echo "If not running interactively, don't do anything"
     return
 fi
 
