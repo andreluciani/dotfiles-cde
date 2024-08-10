@@ -50,3 +50,6 @@ cp "$SCRIPT_DIR/git/.gitconfig" ~/.gitconfig
 
 # Utilities
 sudo apt install tree
+
+#Source dotfiles
+source ~/.bash_profile

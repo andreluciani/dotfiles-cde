@@ -15,7 +15,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{functions,env,alias,prompt}; do
-    source "$DOTFILE"
+    source $DOTFILE
 done
 
 # Set LSCOLORS
